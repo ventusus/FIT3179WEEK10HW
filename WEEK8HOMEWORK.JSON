@@ -30,7 +30,7 @@
           }
         },
         {
-          "calculate": "isValid(datum['2024']) ? datum['2024'] : 0",  // Replace null values with 0
+          "calculate": "isValid(datum['2024']) ? datum['2024'] : 0", 
           "as": "2024"
         },
         {
