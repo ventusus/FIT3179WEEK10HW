@@ -54,8 +54,8 @@
             "axis": {"title": "Unemployment Rate (%)"}
           },
           "tooltip": [
-            {"field": "country_name", "title": "Country"},
-            {"field": "unemployment_rate", "title": "Unemployment Rate (%)"}
+            {"field": "country_name", "title": "Country:"},
+            {"field": "unemployment_rate", "title": "Unemployment Rate (%):", "format": ".2f"}
           ]
         }
       },
