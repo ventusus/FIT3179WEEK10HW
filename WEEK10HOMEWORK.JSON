@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 300,
+    "title": "Top 10 Countries with Highest Unemployment Rates",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ventusus/FIT3179WEEK10HW/refs/heads/main/global_unemployment_data.csv"
+    },
+    "params": [
+      {
+        "name": "Year_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            "2020", "2021", "2022", "2023", "2024"
+          ],
+          "name": "Select Year: "
+        },
+        "value": "2024"
+      }
+    ],
+    "transform": [
+      {
+        "calculate": "datum[Year_selection]",  
+        "as": "unemployment_rate"
+      },
+      {"filter": "datum.unemployment_rate != null"},  
+      {
+        "window": [{"op": "rank", "as": "rank"}],
+        "sort": [{"field": "unemployment_rate", "order": "descending"}]  
+      },
+      {"filter": "datum.rank <= 10"}
+    ],
+    "layer": [
+      {
+        "mark": {
+          "type": "bar",
+          "color": "#FFBB58"
+        },
+        "encoding": {
+          "x": {
+            "field": "country_name",
+            "type": "nominal",
+            "axis": {
+              "title": "Country",
+              "labelFontSize": 12,
+              "labelLimit": 100,
+              "labelPadding": 10
+            }
+          },
+          "y": {
+            "field": "unemployment_rate",
+            "type": "quantitative",
+            "axis": {"title": "Unemployment Rate (%)"}
+          },
+          "tooltip": [
+            {"field": "country_name", "title": "Country"},
+            {"field": "unemployment_rate", "title": "Unemployment Rate (%)"}
+          ]
+        }
+      },
+    
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dy": -6,
+          "color": "black",
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {"field": "country_name", "type": "nominal"},
+          "y": {"field": "unemployment_rate", "type": "quantitative"},
+          "text": {"field": "unemployment_rate", "type": "quantitative"},
+          "tooltip": [{"field": "unemployment_rate", "title": "Unemployment Rate (%)"}]
+        }
+      }
+   
+     
+    ]
+  }
+  
