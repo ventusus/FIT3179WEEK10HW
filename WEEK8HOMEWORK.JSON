@@ -30,6 +30,10 @@
           }
         },
         {
+          "calculate": "isValid(datum['2024']) ? datum['2024'] : 0",  // Replace null values with 0
+          "as": "2024"
+        },
+        {
           "window": [
             {"op": "min", "field": "2024", "as": "min_2024"},
             {"op": "max", "field": "2024", "as": "max_2024"}
