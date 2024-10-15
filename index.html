@@ -14,40 +14,253 @@
     <!-- Basic CSS Styling -->
     <style>
         body {
-            text-align: center; /* Center the body content */
-            font-family: Arial, sans-serif; /* Add font styling */
+            background-color: #f0f4f8;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         h1 {
-            font-size: 2.5em; /* Adjust title size */
-            font-family: 'Times New Roman', Times, serif;
-            margin-bottom: 20px; /* Add space below the title */
+            font-size: 3em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 1.2em;
+            max-width: 1000px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            line-height: 1.2;
         }
 
         .vis-container {
-            display: flex;
-            justify-content: center; /* Center the visualizations */
-            margin: 0 auto; /* Ensure it's centered horizontally */
-            flex-wrap: wrap; /* Allow wrapping for responsiveness */
+            display: block;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        #map, #barchart {
-            margin: 20px; /* Add margin around each visualization */
+        .map-container {
+            width: 100%;
+            position: relative;
+            z-index: 1;
         }
+
+        .annotation-box {
+            position: absolute;
+            bottom: 130px;
+            left: 110px;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: left;
+            z-index: 10;
+        }
+
+        #barchart {
+            margin: 20px auto;
+        }
+
+        /* Side-by-Side Pie Charts */
+        .pie-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .stream-container {
+            width: 100%;
+            position: relative;
+            
+        }
+
+        
+
+        #piechart, #piechart2 {
+            width: 45%; /* Adjust width of the pie charts */
+            margin: 0 10px; /* Add space between the pie charts */
+        }
+
+        /* Adjust the gap between the map and the text */
+        .extra-gap {
+            margin-top: 30px;
+        }
+
+        /* Annotation for Pie Chart 1 */
+        .annotation-piechart1 {
+            position: absolute;
+            top: 150px;  /* Adjust position */
+            left: -15px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: left;
+            z-index: 10;
+        }
+
+        /* Annotation for Pie Chart 2 */
+        .annotation-piechart2 {
+            position: absolute;
+            top: 150px; /* Adjust position */
+            right: 25px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: left;
+            z-index: 10;
+        }
+
+        .annotation-streamgraph {
+            position: absolute;
+            bottom: 120px;  /* Adjust based on where your streamgraph is located */
+            right: 150px; /* Move the annotation box closer to the streamgraph */
+            width: 130px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: left;
+            z-index: 30; 
+        }
+
+        .annotation-streamgraph2 {
+            position: absolute;
+            top: 40px;  /* Adjust based on where your streamgraph is located */
+            left: 240px; /* Move the annotation box closer to the streamgraph */
+            width: 180px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: black;
+            text-align: left;
+            z-index: 30; 
+        }
+
+        .metadata {
+            margin-top: 30px;
+            background-color: #e9ecef;
+            padding: 8px; /* Reduced padding */
+            border-radius: 8px;
+            font-size: 8px; /* Smaller font size */
+            color: #333;
+            text-align: center;
+            font-family: 'Roboto', sans-serif; /* Roboto font */
+            line-height: 1; /* Reduced line height to bring sentences closer */
+        }
+
+        .metadata h3 {
+            margin-bottom: 5px; /* Reduced margin */
+            font-size: 9px; /* Smaller font size for heading */
+            color: #555;
+        }
+
+        .metadata p {
+            margin: 2px 0; /* Closer margin between sentences */
+        }
+
+
+
+
     </style>
     
 </head>
 <body>
-    <h1>Unemployment Rate Around the World (2024)</h1>
+    <h1>Unemployment Around the World</h1>
 
+    <p>
+        Unemployment rates are a key indicator of a country's economic health. They reflect the availability of jobs and the overall vitality of the labor market, serving as a barometer for economic stability and growth. 
+        High unemployment rates often signal underlying issues, such as economic downturns, shifts in industry demands, or inadequate workforce skills. 
+        Understanding these dynamics is crucial for policymakers, businesses, and individuals alike, as they navigate the complexities of employment, workforce development, and economic resilience.
+    </p>
 
-    <div id="map"></div> <!-- Container for the map -->
-    <div id="barchart"> </div> <!-- Container for the bar chart -->
+    <div class="vis-container">
+        
+        <div class="map-container">
+            <div id="map"></div>  <!-- Container for the map -->
+            <div class="annotation-box">
+            2020 saw high unemployment due to the COVID-19 pandemic. Many industries faced disruptions leading to a sharp rise in joblessness worldwide.
+            </div>
+        </div>
 
+        <!-- Place the slider directly below the map -->
+        <div id="slider" style="text-align: center; margin-top: -20px;"></div>
 
+        <p class="extra-gap">
+            Unemployment rates vary widely between countries, reflecting differences in economic conditions, industrial structures, and workforce characteristics. Countries with high unemployment rates often face challenges such as economic instability, shifts in major industries, or limited job creation.
+        </p>
+
+        <div id="barchart"></div> <!-- Bar chart remains above -->
+        
+        <p>
+            Unemployment intersects with gender and age, creating unique challenges for different groups. Younger women may struggle to enter the job market, while older men often face age biases in finding new opportunities. Recognizing these differences is crucial for developing inclusive support that addresses the specific obstacles each demographic faces.
+        </p>
+
+        <!-- Side-by-Side Pie Charts -->
+        <div class="pie-container">
+            <div id="piechart"></div> <!-- Pie chart 1 -->
+            <div class="annotation-piechart1">Unemployment rates between genders are relatively close, labor market may be becoming more equal in terms of gender representation.</div>
+
+            <div id="piechart2"></div> <!-- Pie chart 2 -->
+            <div class="annotation-piechart2">Factors such as a lack of experience for younger job seekers or potential age discrimination or skill gaps for older job seekers.</div>
+        </div>
+
+        <P><br></P>
+
+        <p> Unemployment varies by sector, with industries like manufacturing and retail more affected by economic shifts, while education and healthcare tend to be more stable. Technological changes also impact sector-specific unemployment, creating both job losses and new opportunities. </p>
+        <div class="stream-container">
+            <div id="stream"></div> <!-- Streamgraph container -->
+            <div class="annotation-streamgraph">
+            The data from September 2024 onwards is predicted
+            </div>
+            <div class="annotation-streamgraph2">
+                Early 2020 saw a high unemployment rate across all job sectors due to the COVID-19 pandemic.
+                </div>
+        
+        <P><br></P>
+        
+        
+    </div>
+    </div>
+
+    <div class="metadata"></div>
+        <h3></h3>
+        <p>Author: Tang Wei Yao</p>
+        <p>Generated on: 14 October 2024</p>
+        <p>Data Source: International Monetary Fund (IMF), International Labour Organization (ILO), Trading Economics</p>
+        <p>Data Period: 2020-2024</p>
+
+    </div>
     
     <!-- Load the visualizations via JavaScript -->
-    <script src="WEEK8HOMEWORK.JS"></script> <!-- Your existing JS -->
-    <script src="WEEK10HOMEWORK.JS"></script> <!-- New JS for the bar chart -->
+    <script src="A2Connector.JS"></script> 
+
 </body>
 </html>
